@@ -79,7 +79,7 @@ class BackupDatabaseCommand extends Command {
             $password = \Config::get('database.connections.' . $connection . '.password');
             $database = \Config::get('database.connections.' . $connection . '.database');
             $host = \Config::get('database.connections.' . $connection . '.host');
-            $port = 3306;
+            $port = \Config::get('database.connections.' . $connection . '.port', 3306);
             
             // Create SQL Dump
             exec("mysqldump --routines --host=$host --port=$port --user=$username --password=$password $database > '$tempFile'");
